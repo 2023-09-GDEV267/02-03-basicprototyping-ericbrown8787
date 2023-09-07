@@ -183,8 +183,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 16
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3756808991351292505, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3756808991351292505, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -360,6 +360,18 @@ PrefabInstance:
     - target: {fileID: 4592957669735500889, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
       propertyPath: m_Name
       value: AppleTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034258126949657865, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034258126949657865, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
+      propertyPath: leftAndRightEdge
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034258126949657865, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
+      propertyPath: chanceToChangeDirections
+      value: 0.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
