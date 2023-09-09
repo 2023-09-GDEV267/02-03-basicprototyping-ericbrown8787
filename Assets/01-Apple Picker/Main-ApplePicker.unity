@@ -361,10 +361,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AppleTree
       objectReference: {fileID: 0}
+    - target: {fileID: 6089459237187028490, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7034258126949657865, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7034258126949657865, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
+      propertyPath: applePrefab
+      value: 
+      objectReference: {fileID: 4859969511973193313, guid: 3f1fbd147b0a1ba44be33fa42a482b32, type: 3}
     - target: {fileID: 7034258126949657865, guid: 8a3580ecdd7da3243bd2fb5fb3c352b3, type: 3}
       propertyPath: leftAndRightEdge
       value: 25
