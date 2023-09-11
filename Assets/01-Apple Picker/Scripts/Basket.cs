@@ -33,6 +33,12 @@ public class Basket : MonoBehaviour
         // Mover the x position of this Basket to the x position of the Mouse
         Vector3 pos= this.transform.position;
         pos.x = mousePos3D.x;
+
+        // Exercise 3 
+        // Comment this line to disable *
+        pos.y = mousePos3D.y;
+        // *
+
         this.transform.position = pos;
 
 
