@@ -54,6 +54,11 @@ public class Basket : MonoBehaviour
             int score = int.Parse(scoreGT.text);
             score += 100;
             scoreGT.text = score.ToString();
+            if (score % 1000 == 0)
+            {
+                AppleTree.IncreaseDifficulty();
+                Time.timeScale = 1f;
+            }
             
             // Track the high score
             if (score > HighScore.score)

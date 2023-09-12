@@ -5,10 +5,10 @@ using UnityEngine;
 public class AppleTree : MonoBehaviour
 {
     public GameObject applePrefab;
-    public float speed = 1f;
+    public static float speed = 10f;
     public float leftAndRightEdge = 10f;
     public float chanceToChangeDirections = 0.1f;
-    public float secondsBetweenAppleDrops = 1f;
+    public static float secondsBetweenAppleDrops = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -50,5 +50,21 @@ public class AppleTree : MonoBehaviour
         GameObject apple = Instantiate<GameObject>(applePrefab);
         apple.transform.position = transform.position;
         Invoke("DropApple", secondsBetweenAppleDrops);
+    }
+
+    public static void IncreaseDifficulty()
+    {
+        // My attempt to implement a waves mechanic with increasing difficulty. 
+        if (speed < 0)
+        {
+            speed -= 2f; 
+        } 
+        else
+        {
+            speed += 2f;
+        }
+
+        secondsBetweenAppleDrops -= .1f;
+
     }
 }
