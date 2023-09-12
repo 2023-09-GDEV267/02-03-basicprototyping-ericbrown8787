@@ -12,6 +12,7 @@ public class ApplePicker : MonoBehaviour
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
+    public Transform player; 
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,11 @@ public class ApplePicker : MonoBehaviour
             pos.y = basketBottomY + (basketSpacingY * i);
             tBasketGO.transform.position = pos;
             basketList.Add(tBasketGO);
+        }
+
+        foreach (GameObject basket in basketList)
+        {
+            basket.transform.SetParent(player);
         }
     }    
     
