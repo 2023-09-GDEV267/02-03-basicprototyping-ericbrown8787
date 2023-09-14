@@ -7,8 +7,6 @@ public class Basket : MonoBehaviour
 {
     [Header("Set Dynamically")]
     public TextMeshProUGUI scoreGT;
-    private float delayTime = 3f;
-    private float timer;
 
 
     private void Start()

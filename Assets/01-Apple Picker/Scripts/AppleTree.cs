@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading;
 using UnityEngine;
 
 public class AppleTree : MonoBehaviour
@@ -9,16 +11,31 @@ public class AppleTree : MonoBehaviour
     public float leftAndRightEdge = 10f;
     public float chanceToChangeDirections = 0.1f;
     public static float secondsBetweenAppleDrops = 1f;
+    private static bool isPaused = false;
+    public static float delayTime = 3f;
+    private static float timer = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
+
+
         Invoke("DropApple", 2f);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (isPaused)
+        {
+            if (timer < Time.time)
+            {
+                isPaused = false;
+                timer = 0f;
+            }
+            else return;
+        }
 
         Vector3 pos = transform.position;
 
@@ -37,6 +54,7 @@ public class AppleTree : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isPaused) return;
         Vector3 pos = transform.position;
 
 
@@ -44,6 +62,7 @@ public class AppleTree : MonoBehaviour
         {
             speed *= -1;
         }
+
     }
     void DropApple()
     {
@@ -55,6 +74,14 @@ public class AppleTree : MonoBehaviour
     public static void IncreaseDifficulty()
     {
         // My attempt to implement a waves mechanic with increasing difficulty. 
+        timer = Time.time + delayTime;
+        isPaused = true;
+        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
+        foreach (GameObject tGO in tAppleArray)
+        {
+            Destroy(tGO);
+        }
+
         if (speed < 0)
         {
             speed -= 2f; 
