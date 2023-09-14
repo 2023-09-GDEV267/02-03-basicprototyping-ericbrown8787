@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool yMovementEnabled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +28,11 @@ public class Player : MonoBehaviour
         pos.x = mousePos3D.x;
 
         // Exercise 3 
-        // Comment this line to disable *
-        pos.y = mousePos3D.y;
-        // *
+        // Comment this line to disable
+        if (yMovementEnabled)
+        {
+            pos.y = mousePos3D.y;
+        }
 
         this.transform.position = pos;
     }
