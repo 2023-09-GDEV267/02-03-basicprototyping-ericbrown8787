@@ -67,4 +67,10 @@ public class AppleTree : MonoBehaviour
         secondsBetweenAppleDrops -= .1f;
 
     }
+
+    public static void ResetDifficulty()
+    {
+        speed = 10f;
+        secondsBetweenAppleDrops = 1f;
+    }
 }

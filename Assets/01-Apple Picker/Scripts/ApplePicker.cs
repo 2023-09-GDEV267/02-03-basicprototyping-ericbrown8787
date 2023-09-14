@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq; // Seems to be required to invoke List.Count
+//using System.Linq; // Seems to be required to invoke List.Count
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,6 +55,7 @@ public class ApplePicker : MonoBehaviour
         // If there are no Baskets left, restart the game
         if (basketList.Count == 0)
         {
+            AppleTree.ResetDifficulty();
             SceneManager.LoadScene("Main-ApplePicker");
         }
 
