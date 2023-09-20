@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Apple;
 
 public class FollowCam : MonoBehaviour
 {
@@ -19,10 +20,35 @@ void Awake()
 
     void FixedUpdate()
     {
-        if (POI == null) return;
-        
-        //Get the position of the POI
-        Vector3 destination = POI.transform.position;
+
+        /* 
+                if (POI == null) return;
+
+                //Get the position of the POI
+                Vector3 destination = POI.transform.position;
+        */
+        Vector3 destination;
+        // if there is no POI, return to P: [0,0,0]
+        if (POI== null)
+        {
+            destination = Vector3.zero;
+        }
+        else
+        {
+            // Get the position of the POI
+            destination = POI.transform.position;
+            // If POI is a projectile, check to see if it's at rest.
+            if (POI.tag == "Projectile")
+            {
+                // If it is sleeping(not moving)
+                if (POI.GetComponent<Rigidbody>().IsSleeping())
+                {
+                    // Return to default view
+                    POI = null;
+                    // In the next update
+                }
+            }
+        }
         destination = Vector3.Lerp(transform.position, destination, easing);
 
         // Limit the X and Y to minimum values
