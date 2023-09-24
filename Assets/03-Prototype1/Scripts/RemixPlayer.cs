@@ -26,7 +26,7 @@ public class RemixPlayer : MonoBehaviour
 
     void OnJump()
     {
-        if (rb.velocity.y != 0 || !Physics.Raycast(transform.position, Vector3.down, 1.3f)) return;
+        if (!Physics.Raycast(transform.position, Vector3.down, 1.5f)) return;
             Debug.Log("Jump");
             movementY = jumpForce; movementY = jumpForce;
         
