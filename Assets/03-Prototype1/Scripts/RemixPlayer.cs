@@ -16,6 +16,7 @@ public class RemixPlayer : MonoBehaviour
     private float movementY;
     private bool isJumping;
 
+    public HandheldSlingshot weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,7 @@ public class RemixPlayer : MonoBehaviour
     void OnFire()
     {
         Debug.Log("fire");
+        weapon.FireProjectile();
     }
 
 
