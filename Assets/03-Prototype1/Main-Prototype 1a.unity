@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 210802407}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Launch Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 223263328}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 231885884}
   - component: {fileID: 231885886}
   - component: {fileID: 231885885}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 252920100}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 280519250}
   - component: {fileID: 280519252}
   - component: {fileID: 280519251}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 550852851}
   - component: {fileID: 550852853}
   - component: {fileID: 550852852}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 743246937}
   - component: {fileID: 743246939}
   - component: {fileID: 743246938}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PlayerFacing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 821616534}
   - component: {fileID: 821616536}
   - component: {fileID: 821616535}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 883388083}
   - component: {fileID: 883388085}
   - component: {fileID: 883388084}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 889375150}
   - component: {fileID: 889375149}
   - component: {fileID: 889375151}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1114,6 +1114,7 @@ MonoBehaviour:
   horizontal: 0
   speed: 13
   jumpForce: 25
+  playerAcceleration: 0.5
   weapon: {fileID: 1194758835}
 --- !u!114 &889375151
 MonoBehaviour:
@@ -1156,7 +1157,7 @@ GameObject:
   - component: {fileID: 1168079138}
   - component: {fileID: 1168079140}
   - component: {fileID: 1168079139}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1194758834}
   - component: {fileID: 1194758835}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Slingshot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1279,8 +1280,8 @@ MonoBehaviour:
   launchForce: 20
   launchPoint: {fileID: 210802407}
   player: {fileID: 889375144}
-  rightSlingshotModel: {fileID: 0}
-  leftSlingshotModel: {fileID: 0}
+  rightSlingshotModel: {fileID: 223263327}
+  leftSlingshotModel: {fileID: 252920099}
 --- !u!1 &1460053801
 GameObject:
   m_ObjectHideFlags: 0

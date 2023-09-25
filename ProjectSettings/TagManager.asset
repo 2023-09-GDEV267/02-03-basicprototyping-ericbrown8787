@@ -20,11 +20,11 @@ TagManager:
   - Apple
   - Basket
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerAmmo
+  - Player
+  - Environment
+  - Enemies
+  - EnemyAmmo
   - 
   - 
   - 

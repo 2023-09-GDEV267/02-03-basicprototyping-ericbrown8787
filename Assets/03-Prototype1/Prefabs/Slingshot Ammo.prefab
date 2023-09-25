@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2258073265214416402}
   - component: {fileID: 726447125446517233}
   - component: {fileID: 7741771301820114501}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Slingshot Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

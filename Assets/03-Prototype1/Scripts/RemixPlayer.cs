@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class RemixPlayer : MonoBehaviour
 {
     public float horizontal;
     public float speed = 13f;
     public float jumpForce = 25f;
+    public float playerAcceleration = .5f;
 
     private bool orientation = true;
 
@@ -15,6 +17,7 @@ public class RemixPlayer : MonoBehaviour
     private float movementX;
     private float movementY;
     private bool isJumping;
+
 
     public HandheldSlingshot weapon;
     // Start is called before the first frame update
@@ -51,8 +54,9 @@ public class RemixPlayer : MonoBehaviour
         
             if (movementX > 0)
             {
-                rb.velocity = new Vector3(xVelocity, rb.velocity.y, 0.0f);
-            }
+            rb.velocity = new Vector3(xVelocity, rb.velocity.y, 0.0f);
+            /* rb.MovePosition(transform.position + movementVector * Time.deltaTime * speed);*/
+        }
             else if (movementX < 0)
             {
                 rb.velocity = new Vector3(-xVelocity, rb.velocity.y, 0.0f);

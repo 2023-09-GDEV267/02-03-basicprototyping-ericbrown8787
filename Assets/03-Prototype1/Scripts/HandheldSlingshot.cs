@@ -16,8 +16,8 @@ public class HandheldSlingshot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        leftSlingshotModel = Instantiate(rightSlingshotModel);
-        leftSlingshotModel.transform.localScale = new Vector3(-leftSlingshotModel.transform.localScale.x, -leftSlingshotModel.transform.localScale.y, leftSlingshotModel.transform.localScale.z);
+        /*leftSlingshotModel = Instantiate(rightSlingshotModel);*/
+       /* leftSlingshotModel.transform.localScale = new Vector3(-leftSlingshotModel.transform.localScale.x, -leftSlingshotModel.transform.localScale.y, leftSlingshotModel.transform.localScale.z);*/
     }
 
     // Update is called once per frame
@@ -55,7 +55,6 @@ public class HandheldSlingshot : MonoBehaviour
 
 
         transform.right = direction;
-        Debug.Log(direction.x);
 
     }
 
