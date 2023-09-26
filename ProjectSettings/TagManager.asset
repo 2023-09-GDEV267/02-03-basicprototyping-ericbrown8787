@@ -7,6 +7,7 @@ TagManager:
   - Apple
   - AppleTree
   - Projectile
+  - SlingshotAmmo
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Environment
   - Enemies
   - EnemyAmmo
-  - 
+  - DestructibleEnvironment
   - 
   - 
   - 
