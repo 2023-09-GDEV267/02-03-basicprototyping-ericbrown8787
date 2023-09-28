@@ -51,7 +51,7 @@ public class Slingshot : MonoBehaviour
         aimingMode = true;
         
         // Instantiate a projectile
-        projectile=Instantiate(prefabProjectile);
+        projectile=Instantiate(prefabProjectile) as GameObject;
 
         // Start it at launchPoint
         projectile.transform.position = launchPos;
