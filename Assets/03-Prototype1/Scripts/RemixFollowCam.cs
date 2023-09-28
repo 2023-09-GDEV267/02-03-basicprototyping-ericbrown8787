@@ -60,9 +60,9 @@ void Awake()
 
         // Set the camera to the destination
         transform.position = destination;
-
+/*
         // Set the orthographicSize of the Camera to keep ground in view
-        Camera.main.orthographicSize = destination.y + 10;
+        Camera.main.orthographicSize = destination.y + 10;*/
 
 
     }
