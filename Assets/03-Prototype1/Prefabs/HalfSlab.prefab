@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1565804869097505699}
   - component: {fileID: 2743143674993662178}
   - component: {fileID: -1234862183944336435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HalfSlab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

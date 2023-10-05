@@ -25,7 +25,7 @@ public class RemixMain : MonoBehaviour
         {
             highestReached = Mathf.RoundToInt(player.transform.position.y);
         }
-        Debug.Log(highestReached);
+       /* Debug.Log(highestReached);*/
     }
 
     void SpawnPlatform()

@@ -6,91 +6,60 @@ using UnityEngine.Windows;
 
 public class RemixPlayer : MonoBehaviour
 {
-    public float horizontal;
-    public float speed = 13f;
-    public float jumpForce = 25f;
-    public float playerAcceleration = .5f;
-    public float maxForce = 1;
+
+
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    public float speed = 10f;
+    public float jumpForce = 16f;
+
+    private float horizontal;
+
+    private bool isFacingRight = true;
     public float groundTolerance = 1.5f;
-    public LayerMask layerMask;
-
     private Rigidbody rb;
-    private float movementX;
-    private float movementY;
-    private bool isJumping;
-    private SphereCollider toleranceSphere;
-
-
-    public HandheldSlingshot weapon;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        toleranceSphere = GetComponent<SphereCollider>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
-    void OnMove(InputValue movementValue)
+    private void FixedUpdate()
     {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-        movementX = movementVector.x;
-        movementY = movementVector.y;
-        
+
+        rb.velocity = new Vector3(horizontal * speed, rb.velocity.y);
+        if ((!isFacingRight && horizontal > 0f) || (isFacingRight && horizontal < 0f))
+        {
+            OrientPlayer();
+        }
     }
-
-    void OnJump(InputValue jumpValue)
-    {
-        if (!IsGrounded()) return;
-        isJumping = true;
-    }
-
-    void OnFire()
-    {
-        weapon.FireProjectile();
-    }
-
-
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, groundTolerance);
-
-   
+        /*return Physics.Raycast(transform.position, Vector3.down, groundTolerance);*/
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
 
 
     }
-    void FixedUpdate()
+
+    private void OrientPlayer()
     {
-        /*      Vector3 currentVelocity = rb.velocity;
-              Vector3 targetVelocity = new Vector3(move.x, move.y, 0);
-              targetVelocity *= speed;
+        isFacingRight = !isFacingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1f;
+        transform.localScale = localScale;
+    }
 
+    public void Move(InputAction.CallbackContext context)
+    {
+        horizontal = context.ReadValue<Vector2>().x;
+    }
 
-              Vector3 velocityChange = targetVelocity- currentVelocity;
-
-              Vector3.ClampMagnitude(velocityChange, maxForce);
-
-              rb.AddForce(velocityChange, ForceMode.VelocityChange);*/
-
-
-        if (movementX > 0)
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed && IsGrounded())
         {
-            rb.velocity = new Vector3(speed, rb.velocity.y, 0.0f);
-
+            rb.AddForce(new Vector3(0, jumpForce, 0.0f), ForceMode.Impulse);
         }
-        else if (movementX < 0)
-        {
-            rb.velocity = new Vector3(-speed, rb.velocity.y, 0.0f);
-        }
-        if (movementY != 0) movementY = 0;
 
-        Vector3 movement = new Vector3(movementX, movementY, 0.0f);
-   /*     rb.AddForce(movement*speed*Time.fixedDeltaTime);*/
-
-
-        if (isJumping)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isJumping = false;
-        }
     }
 
 }
