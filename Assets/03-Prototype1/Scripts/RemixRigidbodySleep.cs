@@ -5,9 +5,11 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class RemixRigidbodySleep : MonoBehaviour
 {
+   
+    public int durability = 4;
     private Rigidbody rb;
     private Rigidbody[] siblings;
-    private int durability = 5;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +19,20 @@ public class RemixRigidbodySleep : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Destroying platforms as we climb
-        if (transform.position.y < Camera.main.transform.position.y - 15)
+        if (transform.position.y < Camera.main.transform.position.y - 12)
+        {
+            rb.isKinematic = false;
+        }
+        
+        if (transform.position.y < Camera.main.transform.position.y - 30)
         {
             Destroy(this.gameObject);
             Destroy(this);
         }
+
     }
 
     void OnCollisionEnter(Collision coll)
@@ -33,18 +41,6 @@ public class RemixRigidbodySleep : MonoBehaviour
         GameObject collidedWith = coll.gameObject;
         if (collidedWith.tag == "SlingshotAmmo")
         {
-/*            if(transform.parent){
-                siblings = transform.parent.GetComponentsInChildren<Rigidbody>();
-                foreach (Rigidbody sibling in siblings)
-                {
-                    sibling.isKinematic = false;
-
-                }
-
-            } else
-            {
-                rb.isKinematic = false;
-            }*/
         if (durability >0)
             {
                 durability -= 1;

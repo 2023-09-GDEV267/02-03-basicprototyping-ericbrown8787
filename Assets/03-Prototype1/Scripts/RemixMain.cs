@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RemixMain : MonoBehaviour
 {
   /*  [Range(0,1)]public float chanceToSpawnTwoPlatforms = .5f;*/
-    public float randomPositionTolerance = 10;
-    public float platformSpread = 10;
+    [Range(0,11)]public float randomPositionTolerance = 10;
+    [Range(10,15)]public float platformSpread = 15;
     public GameObject[] platforms;
-    private GameObject player;
+    public RemixPlayer player;
     private int highestReached;
     private float nextGoal;
     private Vector3 randomPosition;
@@ -21,7 +22,6 @@ public class RemixMain : MonoBehaviour
     {
         nextGoal = 10;
         highestReached = 0;
-        player = GameObject.Find("Player");
     }
 
 
@@ -29,6 +29,10 @@ public class RemixMain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!player.Alive)
+        {
+            SceneManager.LoadScene("Main-Prototype 1");
+        }
         if (player.transform.position.y > highestReached)
         {
             highestReached = Mathf.RoundToInt(player.transform.position.y);

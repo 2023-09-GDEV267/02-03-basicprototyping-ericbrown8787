@@ -7,7 +7,6 @@ using UnityEngine.Windows;
 public class RemixPlayer : MonoBehaviour
 {
 
-
     public float speed = 10f;
     public float jumpForce = 16f;
     public GroundCheck groundCheck;
@@ -16,18 +15,34 @@ public class RemixPlayer : MonoBehaviour
 
     private bool isFacingRight = true;
     private Rigidbody rb;
+
+    private bool alive = true;
+    public bool Alive
+    {
+        get { return alive; }
+        private set {
+            alive = value;
+        }   
+    }
+
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
     }
     private void FixedUpdate()
     {
-
-        rb.velocity = new Vector3(horizontal * speed, rb.velocity.y);
-        if ((!isFacingRight && horizontal > 0f) || (isFacingRight && horizontal < 0f))
+        // Player dies if they fall below the camera viewport
+        if (transform.position.y < Camera.main.transform.position.y - 15)
         {
-            OrientPlayer();
+            alive = false;
         }
+            rb.velocity = new Vector3(horizontal * speed, rb.velocity.y);
+            if ((!isFacingRight && horizontal > 0f) || (isFacingRight && horizontal < 0f))
+            {
+                OrientPlayer();
+            }
+        
+
     }
     private bool IsGrounded()
     {
@@ -60,6 +75,14 @@ public class RemixPlayer : MonoBehaviour
             rb.AddForce(new Vector3(0, jumpForce, 0.0f), ForceMode.Impulse);
         }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Lightning")
+        {
+            alive = false;
+        }
     }
 
 }
