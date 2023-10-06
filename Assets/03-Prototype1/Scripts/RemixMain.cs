@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RemixMain : MonoBehaviour
 {
-    public float randomPositionTolerance;
+    public float randomPositionTolerance = 10;
     public float platformSpread = 10;
     public GameObject[] platforms;
     public GameObject platformPrefab;
@@ -14,10 +14,12 @@ public class RemixMain : MonoBehaviour
     private int randomIndex;
     private Vector3 randomPosition;
     private Vector3 lastRandomPosition;
+    private bool newPlatformSpawned = false;
+    
     // Start is called before the first frame update
     void Start()
     {
-        nextGoal = Camera.main.transform.position.y;
+        nextGoal = 10;
         highestReached = 0;
         player = GameObject.Find("Player");
     }
@@ -32,20 +34,36 @@ public class RemixMain : MonoBehaviour
             highestReached = Mathf.RoundToInt(player.transform.position.y);
         }
 
-        if (highestReached >= nextGoal)
-        {
-            randomIndex = Mathf.FloorToInt(Random.Range(0,platforms.Length));
-            randomPosition = new Vector3(Random.Range(-platformSpread, platformSpread), nextGoal + 15, 0.0f);
-
-            Instantiate(platforms[randomIndex], randomPosition, Quaternion.identity);
-            nextGoal = Camera.main.transform.position.y + Camera.main.orthographicSize;
-        }
 
        /* Debug.Log(highestReached);*/
     }
 
+    private void FixedUpdate()
+    {
+
+        if (highestReached >= nextGoal && !newPlatformSpawned)
+        {
+            Debug.Log("ding");
+            SpawnPlatform();
+        }
+    }
+
     void SpawnPlatform()
     {
-        /*Instantiate(platformPrefab, Camera.ViewportToWorldPoint(new Vector2(.5f,1.2f));*/
+        randomPosition = new Vector3(Random.Range(-platformSpread, platformSpread), nextGoal + 20, 0.0f);
+        if (randomPosition.x < lastRandomPosition.x + randomPositionTolerance && randomPosition.x > lastRandomPosition.x - randomPositionTolerance)
+        {
+            //Start over if platforms are too close
+            SpawnPlatform();
+        }
+        else
+        {
+            randomIndex = Mathf.FloorToInt(Random.Range(0, platforms.Length));
+            Instantiate(platforms[randomIndex], randomPosition, Quaternion.identity);
+            Debug.Log($"New platform spawned at Y{randomPosition.y}");
+            nextGoal += 10;
+/*            newPlatformSpawned = true;*/
+        }
+        
     }
 }
