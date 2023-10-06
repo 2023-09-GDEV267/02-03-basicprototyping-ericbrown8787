@@ -8,15 +8,13 @@ public class RemixPlayer : MonoBehaviour
 {
 
 
-    public Transform groundCheck;
-    public LayerMask groundLayer;
     public float speed = 10f;
     public float jumpForce = 16f;
+    public GroundCheck groundCheck;
 
     private float horizontal;
 
     private bool isFacingRight = true;
-    public float groundTolerance = 1.5f;
     private Rigidbody rb;
     private void Start()
     {
@@ -33,12 +31,13 @@ public class RemixPlayer : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        /*return Physics.Raycast(transform.position, Vector3.down, groundTolerance);*/
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-
+        /*return Physics.Raycast(transform.position, Vector3.down, groundTolerance);*//*
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);*/
+        return groundCheck.IsGrounded();
 
 
     }
+
 
     private void OrientPlayer()
     {
@@ -57,6 +56,7 @@ public class RemixPlayer : MonoBehaviour
     {
         if (context.performed && IsGrounded())
         {
+           
             rb.AddForce(new Vector3(0, jumpForce, 0.0f), ForceMode.Impulse);
         }
 

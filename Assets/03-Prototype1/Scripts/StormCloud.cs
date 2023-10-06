@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading;
 using UnityEngine;
 
-public class RemixEnemy : MonoBehaviour
+public class StormCloud : MonoBehaviour
 {
     public GameObject ammoPrefab;
     public static float speed = 10f;

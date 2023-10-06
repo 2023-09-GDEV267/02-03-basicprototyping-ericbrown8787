@@ -8,6 +8,9 @@ TagManager:
   - AppleTree
   - Projectile
   - SlingshotAmmo
+  - Ground
+  - KillZone
+  - Lightning
   layers:
   - Default
   - TransparentFX
