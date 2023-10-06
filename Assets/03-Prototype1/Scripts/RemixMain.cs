@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class RemixMain : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class RemixMain : MonoBehaviour
     [Range(10,15)]public float platformSpread = 15;
     public GameObject[] platforms;
     public RemixPlayer player;
+    public TextMeshProUGUI highScore;
+    public TextMeshProUGUI currentAltitude;
     private int highestReached;
     private float nextGoal;
     private Vector3 randomPosition;
@@ -38,7 +41,7 @@ public class RemixMain : MonoBehaviour
             highestReached = Mathf.RoundToInt(player.transform.position.y);
         }
 
-
+        currentAltitude.text = $"Altitude: {Mathf.Round(player.transform.position.y)}m";
        /* Debug.Log(highestReached);*/
     }
 
