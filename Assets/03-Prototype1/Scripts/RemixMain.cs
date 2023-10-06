@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class RemixMain : MonoBehaviour
 {
+  /*  [Range(0,1)]public float chanceToSpawnTwoPlatforms = .5f;*/
     public float randomPositionTolerance = 10;
     public float platformSpread = 10;
     public GameObject[] platforms;
-    public GameObject platformPrefab;
     private GameObject player;
     private int highestReached;
     private float nextGoal;
-    private int randomIndex;
     private Vector3 randomPosition;
     private Vector3 lastRandomPosition;
     private bool newPlatformSpawned = false;
+/*    private bool secondPlatformSpawned = false;*/
     
     // Start is called before the first frame update
     void Start()
@@ -58,9 +58,16 @@ public class RemixMain : MonoBehaviour
         }
         else
         {
-            randomIndex = Mathf.FloorToInt(Random.Range(0, platforms.Length));
+            int randomIndex = Mathf.FloorToInt(Random.Range(0, platforms.Length));
             Instantiate(platforms[randomIndex], randomPosition, Quaternion.identity);
-            Debug.Log($"New platform spawned at Y{randomPosition.y}");
+            lastRandomPosition = randomPosition;
+/*            if (secondPlatformSpawned == false&&Random.value < chanceToSpawnTwoPlatforms)
+            {
+                Debug.Log("Second platform spawned");
+                secondPlatformSpawned = true;
+                SpawnPlatform();
+            }
+            secondPlatformSpawned = false;*/
             nextGoal += 10;
 /*            newPlatformSpawned = true;*/
         }

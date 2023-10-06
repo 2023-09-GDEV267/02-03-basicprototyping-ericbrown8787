@@ -569,11 +569,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomPositionTolerance: 0
-  platformSpread: 10
+  platformSpread: 15
   platforms:
   - {fileID: 4107719533760527140, guid: 5a02fac15412f314eba55642a5d78793, type: 3}
   - {fileID: 8212850616554816323, guid: 1f608ea6ae9461d41ba4cb8948c77d4d, type: 3}
-  platformPrefab: {fileID: 0}
+  - {fileID: 4107719533760527140, guid: 7ba8a4188c0daaf449733e3a7b85bc21, type: 3}
 --- !u!1 &550852850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,8 +1298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0262d57b9dfedd409129cffd3331de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 23
+  speed: 12
+  jumpForce: 25
   groundCheck: {fileID: 750845911}
 --- !u!114 &889375151
 MonoBehaviour:
