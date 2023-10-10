@@ -39,7 +39,7 @@ public class RemixRigidbodySleep : MonoBehaviour
     {
         // Find out what hit the basket
         GameObject collidedWith = coll.gameObject;
-        if (collidedWith.tag == "SlingshotAmmo")
+        if (collidedWith.tag == "Lightning")
         {
         if (durability >0)
             {

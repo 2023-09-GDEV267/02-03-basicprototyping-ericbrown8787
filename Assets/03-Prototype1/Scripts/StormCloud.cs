@@ -7,6 +7,7 @@ using UnityEngine;
 public class StormCloud : MonoBehaviour
 {
     public GameObject ammoPrefab;
+    public float lightningForceMultiplier = 1.0f;
     public static float speed = 10f;
     public float leftAndRightEdge = 10f;
     public float chanceToChangeDirections = 0.1f;
@@ -65,6 +66,7 @@ public class StormCloud : MonoBehaviour
     void Attack()
     {
         GameObject apple = Instantiate<GameObject>(ammoPrefab);
+        apple.GetComponent<Rigidbody>().AddForce(Vector3.down * lightningForceMultiplier, ForceMode.Impulse);
         apple.transform.position = transform.position;
         Invoke("Attack", secondsBetweenDrops);
     }

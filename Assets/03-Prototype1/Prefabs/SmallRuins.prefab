@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9120278393797594398}
   - component: {fileID: 1699049350123393660}
   - component: {fileID: 1428408667314925795}
-  - component: {fileID: 3204341208222453395}
   m_Layer: 6
   m_Name: SmallRuins
   m_TagString: Ground
@@ -137,18 +136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3204341208222453395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4107719533760527140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cad1cab6b380cc84f988ba94c59c89d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &849495635093776704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -201,13 +188,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1455759178314386262, guid: cf87109257839204f9970f50786262bf, type: 3}
+      propertyPath: durability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234810056726597904, guid: cf87109257839204f9970f50786262bf, type: 3}
+      propertyPath: durability
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494282425026971961, guid: cf87109257839204f9970f50786262bf, type: 3}
+      propertyPath: durability
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2612331898470476141, guid: cf87109257839204f9970f50786262bf, type: 3}
       propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779336591998001642, guid: cf87109257839204f9970f50786262bf, type: 3}
+      propertyPath: durability
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3428222005617987813, guid: cf87109257839204f9970f50786262bf, type: 3}
       propertyPath: m_Name
       value: SmallBuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052498618304996603, guid: cf87109257839204f9970f50786262bf, type: 3}
+      propertyPath: durability
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4530894619502576815, guid: cf87109257839204f9970f50786262bf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -235,6 +242,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7080292417201035219}
     m_Modifications:
+    - target: {fileID: -1234862183944336435, guid: 1f608ea6ae9461d41ba4cb8948c77d4d, type: 3}
+      propertyPath: durability
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7984778323249861984, guid: 1f608ea6ae9461d41ba4cb8948c77d4d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -301,6 +312,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7080292417201035219}
     m_Modifications:
+    - target: {fileID: -1234862183944336435, guid: 1f608ea6ae9461d41ba4cb8948c77d4d, type: 3}
+      propertyPath: durability
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7984778323249861984, guid: 1f608ea6ae9461d41ba4cb8948c77d4d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5

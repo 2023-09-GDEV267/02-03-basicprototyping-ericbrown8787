@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class RemixMain : MonoBehaviour
 {
@@ -11,9 +12,10 @@ public class RemixMain : MonoBehaviour
     [Range(10,15)]public float platformSpread = 15;
     public GameObject[] platforms;
     public RemixPlayer player;
-    public TextMeshProUGUI highScore;
-    public TextMeshProUGUI currentAltitude;
+    public TextMeshProUGUI highScoreUI;
+    public TextMeshProUGUI currentAltitudeUI;
     private int highestReached;
+    private int highScore;
     private float nextGoal;
     private Vector3 randomPosition;
     private Vector3 lastRandomPosition;
@@ -27,7 +29,16 @@ public class RemixMain : MonoBehaviour
         highestReached = 0;
     }
 
+    void Awake()
+    {
+        // If the PlayerPrefs HighScore already exists, read it
+        if (PlayerPrefs.HasKey("RemixHighScore"))
+        {
+            highScore = PlayerPrefs.GetInt("RemixHighScore");
+        }
 
+        PlayerPrefs.SetInt("RemixHighScore", highScore);
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,8 +52,18 @@ public class RemixMain : MonoBehaviour
             highestReached = Mathf.RoundToInt(player.transform.position.y);
         }
 
-        currentAltitude.text = $"Altitude: {Mathf.Round(player.transform.position.y)}m";
-       /* Debug.Log(highestReached);*/
+        currentAltitudeUI.text = $"Altitude: {Mathf.Round(player.transform.position.y)}m";
+
+        
+
+        // Update the PlayerPrefs score if necessary
+        if (highestReached > PlayerPrefs.GetInt("RemixHighScore"))
+        {
+            PlayerPrefs.SetInt("RemixHighScore", highestReached);
+            
+        }
+        highScoreUI.text = $"High Score: {highScore}m";
+        /* Debug.Log(highestReached);*/
     }
 
     private void FixedUpdate()
@@ -50,7 +71,6 @@ public class RemixMain : MonoBehaviour
 
         if (highestReached >= nextGoal && !newPlatformSpawned)
         {
-            Debug.Log("ding");
             SpawnPlatform();
         }
     }
