@@ -6,6 +6,8 @@ using UnityEngine.Windows;
 
 public class RemixPlayer : MonoBehaviour
 {
+    // 2D Player Controls adapted from this Unity2D tutorial: https://www.youtube.com/watch?v=24-BkpFSZuI
+
 
     public float speed = 10f;
     public float jumpForce = 16f;
@@ -16,12 +18,12 @@ public class RemixPlayer : MonoBehaviour
     private bool isFacingRight = true;
     private Rigidbody rb;
 
-    private bool alive = true;
+    private bool _alive = true;
     public bool Alive
     {
-        get { return alive; }
+        get { return _alive; }
         private set {
-            alive = value;
+            _alive = value;
         }   
     }
 
@@ -34,7 +36,7 @@ public class RemixPlayer : MonoBehaviour
         // Player dies if they fall below the camera viewport
         if (transform.position.y < Camera.main.transform.position.y - 15)
         {
-            alive = false;
+            _alive = false;
         }
             rb.velocity = new Vector3(horizontal * speed, rb.velocity.y);
             if ((!isFacingRight && horizontal > 0f) || (isFacingRight && horizontal < 0f))
@@ -46,11 +48,7 @@ public class RemixPlayer : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        /*return Physics.Raycast(transform.position, Vector3.down, groundTolerance);*//*
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);*/
         return groundCheck.IsGrounded();
-
-
     }
 
 
@@ -81,7 +79,7 @@ public class RemixPlayer : MonoBehaviour
     {
         if (collision.gameObject.tag == "Lightning")
         {
-            alive = false;
+            _alive = false;
         }
     }
 

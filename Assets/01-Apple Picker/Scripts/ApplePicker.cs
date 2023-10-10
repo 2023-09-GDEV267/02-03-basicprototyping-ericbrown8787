@@ -17,6 +17,8 @@ public class ApplePicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Hardcoding gravity because I adjusted it for my mashup assignment
+        Physics.gravity = new Vector3(0, -9.81f, 0);
         basketList = new List<GameObject>();
         for (int i = 0; i < numBaskets; i++)
         {

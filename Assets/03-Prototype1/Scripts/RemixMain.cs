@@ -25,6 +25,8 @@ public class RemixMain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Hardcoding gravity because I adjusted it for my mashup assignment
+        Physics.gravity = new Vector3(0, -19.62f, 0);
         nextGoal = 10;
         highestReached = 0;
     }
@@ -59,6 +61,7 @@ public class RemixMain : MonoBehaviour
         // Update the PlayerPrefs score if necessary
         if (highestReached > PlayerPrefs.GetInt("RemixHighScore"))
         {
+            highScore = highestReached;
             PlayerPrefs.SetInt("RemixHighScore", highestReached);
             
         }
@@ -88,6 +91,7 @@ public class RemixMain : MonoBehaviour
             int randomIndex = Mathf.FloorToInt(Random.Range(0, platforms.Length));
             Instantiate(platforms[randomIndex], randomPosition, Quaternion.identity);
             lastRandomPosition = randomPosition;
+            //Attempted to add more complex random platform spawning.
 /*            if (secondPlatformSpawned == false&&Random.value < chanceToSpawnTwoPlatforms)
             {
                 Debug.Log("Second platform spawned");

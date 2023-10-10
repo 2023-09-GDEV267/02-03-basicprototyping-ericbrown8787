@@ -8,8 +8,6 @@ public class RemixRigidbodySleep : MonoBehaviour
    
     public int durability = 4;
     private Rigidbody rb;
-    private Rigidbody[] siblings;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +20,10 @@ public class RemixRigidbodySleep : MonoBehaviour
     void FixedUpdate()
     {
         // Destroying platforms as we climb
-        if (transform.position.y < Camera.main.transform.position.y - 12)
+        if (transform.position.y < Camera.main.transform.position.y - 12.5f)
         {
             rb.isKinematic = false;
+
         }
         
         if (transform.position.y < Camera.main.transform.position.y - 30)

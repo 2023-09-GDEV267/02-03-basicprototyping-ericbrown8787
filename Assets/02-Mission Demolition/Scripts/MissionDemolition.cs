@@ -31,6 +31,8 @@ public class MissionDemolition : MonoBehaviour
     public string showing = "Show Slingshot"; // Followcam mode
     void Start()
     {
+        //Hardcoding gravity because I adjusted it for my mashup assignment
+        Physics.gravity = new Vector3(0, -9.81f, 0);
         S = this;
         level = 0;
         levelMax = castles.Length;
@@ -38,6 +40,7 @@ public class MissionDemolition : MonoBehaviour
     }
     void StartLevel()
     {
+
         //Get rid of the old castle if one exists
         if (castle!= null)
         {

@@ -8,33 +8,20 @@ public class StormCloud : MonoBehaviour
 {
     public GameObject ammoPrefab;
     public float lightningForceMultiplier = 1.0f;
-    public static float speed = 10f;
+    public float speed = 10f;
     public float leftAndRightEdge = 10f;
     public float chanceToChangeDirections = 0.1f;
-    public static float secondsBetweenDrops = 1f;
-    private static bool isPaused = false;
-    public static float delayTime = 3f;
-    private static float timer = 0f;
+    public float secondsBetweenDrops = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Attack", 2f);
+        Invoke("Attack", secondsBetweenDrops);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (isPaused)
-        {
-            if (timer < Time.time)
-            {
-                isPaused = false;
-                timer = 0f;
-            }
-            else return;
-        }
 
         Vector3 pos = transform.position;
 
@@ -49,11 +36,11 @@ public class StormCloud : MonoBehaviour
 
         pos.x += speed * Time.deltaTime;
         transform.position = pos;
+        transform.position = pos;
     }
 
     private void FixedUpdate()
     {
-        if (isPaused) return;
         Vector3 pos = transform.position;
 
 
@@ -69,35 +56,5 @@ public class StormCloud : MonoBehaviour
         apple.GetComponent<Rigidbody>().AddForce(Vector3.down * lightningForceMultiplier, ForceMode.Impulse);
         apple.transform.position = transform.position;
         Invoke("Attack", secondsBetweenDrops);
-    }
-
-    public static void IncreaseDifficulty()
-    {
-        // My attempt to implement a waves mechanic with increasing difficulty. 
-        timer = Time.time + delayTime;
-        isPaused = true;
-        GameObject[] tAppleArray = GameObject.FindGameObjectsWithTag("Apple");
-        foreach (GameObject tGO in tAppleArray)
-        {
-            Destroy(tGO);
-        }
-
-        if (speed < 0)
-        {
-            speed -= 2f; 
-        } 
-        else
-        {
-            speed += 2f;
-        }
-
-        secondsBetweenDrops -= .1f;
-
-    }
-
-    public static void ResetDifficulty()
-    {
-        speed = 10f;
-        secondsBetweenDrops = 1f;
     }
 }

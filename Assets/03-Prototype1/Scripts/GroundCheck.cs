@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
+    //Groundcheck class attached to a GameObject with collider to report whether player is on the ground
     private bool isGrounded=true;
 
     private void OnTriggerEnter(Collider coll)
